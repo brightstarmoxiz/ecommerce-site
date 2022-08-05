@@ -1,0 +1,9 @@
+{
+    "typescript.tsdk": ""
+}
+
+// {
+//     "http.proxy": "http://username:password@hostname:port/",
+//     "http.proxyAuthorization":null,
+
+// }
