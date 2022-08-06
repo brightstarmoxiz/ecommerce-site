@@ -30,5 +30,5 @@ const dispatch = useDispatch();
       </div>
     )}
       </div>
-    )
+    );
 }

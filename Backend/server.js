@@ -1,8 +1,19 @@
 import express from 'express';
 import data from './data.js';
+// import { Link,useParams } from "react-router-dom"
 
+const app = express();
 
-const app = express()
+app.get('/api/products/:id', (req, res) =>{
+    // const params = useParams();
+    const product = data.products.find(x => x._id === req.params.id);
+    if (product) {
+        res.send(product);
+    }else {
+        res.status(404).send({message: 'Product not Found' })
+    }
+})
+
 app.get('/api/products', (req,res) => {
     res.send(data.products);
 });

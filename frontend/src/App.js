@@ -4,7 +4,7 @@ import ProductScreen from './screens/ProductScreen'
 import HomeScreen from './screens/HomeScreen'
 import "./index.css"
 function App() {
-
+ 
   return (
     <>
 
@@ -22,12 +22,13 @@ function App() {
           </div>
           </header>
           <main>
-            <Routes>
-              <Route>
+           
+          <Routes>
             <Route path="/product/:id" element={<ProductScreen/>}></Route>
              <Route path="/"element={<HomeScreen/>}/>
-             </Route>
              </Routes>
+            
+            
           </main>
           
       <footer className="row center">
