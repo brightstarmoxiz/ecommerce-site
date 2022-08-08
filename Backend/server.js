@@ -5,12 +5,16 @@ import data from './data.js';
 const app = express();
 
 app.get('/api/products/:id', (req, res) =>{
-    // const params = useParams();
-    const product = data.products.find(x => x._id === req.params.id);
+    //  const params = useParams();
+    // const id = req.params.id; 
+    const product = data.products.find((x) => x._id ===  req.params.id);
+    console.log(req.params['id']);
     if (product) {
         res.send(product);
+        // console.log(product);
     }else {
         res.status(404).send({message: 'Product not Found' })
+        // console.log({message: 'Product not Found' });
     }
 })
 

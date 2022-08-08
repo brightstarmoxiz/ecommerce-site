@@ -1,21 +1,46 @@
-import React from 'react';
-import data from '../data'
+import React, { useEffect } from 'react';
+
 import Rating from '../component/Rating'
-import { Link,useParams } from "react-router-dom"
+import { Link,useParams} from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import LoadingBox from '../component/LoadingBox';
+import MessageBox from '../component/MessageBox';
+import { detailsProduct } from '../actions/productActions';
 
 
 
 
 export default function  ProductScreen () {
-    const params = useParams();
    
-   const product = data.products.find((x) => x._id === params.id);
-   console.log(product); //  console.log(props.match.params.id)
-   if (!product) {
-       return <div> Product Not Found</div>;
-   }
+     const params = useParams();
+    //    const product = data.products.find((x) => x._id === params.id);
+  
+  
+  const dispatch = useDispatch();
+  const productId = params.id
+  const productDetails = useSelector ((state) => state.productDetails)
+  const {loading, error, product} = productDetails;
+    //  console.log(product); //  console.log(props.match.params.id)
+//  console.log(productDetails);
+ //console.log(detailsProduct);
+useEffect(() => {
+  dispatch(detailsProduct());
+},[dispatch,productId])
+console.log(productId);
+
+
+
     return (
-        <div > 
+
+
+        <div>
+        {loading ? (
+           <LoadingBox></LoadingBox>
+       ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
+        ):(
+      
+            <div > 
             <Link to="/">Back to result</Link>
            <div className="row top">
            <div className="col-2">
@@ -70,6 +95,12 @@ export default function  ProductScreen () {
            </div>
            
         </div>
+    )}
+      </div>
+
+
+
+
     
     )
 }
