@@ -1,7 +1,7 @@
 const data = {
       products:[
           {
-              _id:1,
+              _id:'1',
               name:'Huge boss boxer',
               category:'Boxers',
               image:'/image/boxer2.JPG',

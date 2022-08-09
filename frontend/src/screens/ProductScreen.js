@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+// import product from '../component/Product';
 import Rating from '../component/Rating'
 import { Link,useParams} from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,23 +10,24 @@ import { detailsProduct } from '../actions/productActions';
 
 
 
-export default function  ProductScreen () {
-   
-     const params = useParams();
+export default function  ProductScreen (props) {
+    
+      const params = useParams();
     //    const product = data.products.find((x) => x._id === params.id);
   
   
-  const dispatch = useDispatch();
-  const productId = params.id
+  const dispatch = useDispatch();  
+   const productId =params.id;
   const productDetails = useSelector ((state) => state.productDetails)
   const {loading, error, product} = productDetails;
-    //  console.log(product); //  console.log(props.match.params.id)
+  console.log(product); //  console.log(props.match.params.id)
 //  console.log(productDetails);
  //console.log(detailsProduct);
 useEffect(() => {
   dispatch(detailsProduct());
-},[dispatch,productId])
-console.log(productId);
+  
+},[dispatch,product])
+ console.log(productId);
 
 
 
