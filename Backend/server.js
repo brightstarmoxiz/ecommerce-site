@@ -4,12 +4,13 @@ import data from './data.js';
 
 const app = express();
 
-app.get('/api/products/:id', (req, res) =>{
+app.get("/api/products/:id", (req, res) =>{
     //  const params = useParams();
-    // const id = req.params.id; 
-    const product = data.products.find((x) => x._id ===  req.params.id);
-    console.log(req.params['id']);
+     const {id} = req.params; 
+    const product = data.products.find((x) => x._id.toString() ===  req.params.id.toString());
+    console.log(req.params);
     if (product) {
+        res.get(product)
         res.send(product);
         // console.log(product);
     }else {

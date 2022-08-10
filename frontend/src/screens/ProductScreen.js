@@ -10,9 +10,9 @@ import { detailsProduct } from '../actions/productActions';
 
 
 
-export default function  ProductScreen (props) {
+export default function  ProductScreen () {
     
-      const params = useParams();
+      const params = useParams()
     //    const product = data.products.find((x) => x._id === params.id);
   
   
